@@ -20,6 +20,11 @@ Test with floats:
     >>> matrix_divided(matrix, 2)
     [[0.75, 1.25], [1.75, 2.25]]
 
+Test with infinity:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, float('inf'))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 Test division by zero:
     >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
     Traceback (most recent call last):
