@@ -1,46 +1,24 @@
 #!/usr/bin/python3
 """
-Module 2-matrix_divided
-Contains a function that divides all elements of a matrix.
+Module 4-print_square
+Contains a function that prints a square with the character #.
 """
 
 
-def matrix_divided(matrix, div):
-    """Divides all elements of a matrix by div.
+def print_square(size):
+    """Prints a square with the character #.
+
     Args:
-        matrix (list of lists of int/float): The matrix to be divided.
-        div (int/float): The divisor.
+        size (int): The size length of the square.
+
     Raises:
-        TypeError: If matrix is not a list of lists of integers/floats,
-                   or if div is not a number.
-        ZeroDivisionError: If div is zero.
-    Returns:
-        list of lists of float: A new matrix with the divided values rounded
-        to 2 decimal places.
+        TypeError: If size is not an integer.
+        ValueError: If size is less than 0.
     """
+    if not isinstance(size, int):
+        raise TypeError("size must be an integer")
+    if size < 0:
+        raise ValueError("size must be >= 0")
 
-    if not isinstance(div, (int, float)):
-        raise TypeError("div must be a number")
-    if div == 0:
-        raise ZeroDivisionError("division by zero")
-    if div == float('inf') or div == float('-inf'):
-        return [[0.0 for _ in row] for row in matrix]
-
-    if (not isinstance(matrix, list) or
-            not all(isinstance(row, list) for row in matrix) or
-            not all(isinstance(elem, (int, float))
-                    for row in matrix for elem in row)):
-        raise TypeError("matrix must be a matrix (list of lists) "
-                        "of integers/floats")
-
-    row_length = len(matrix[0])
-    for row in matrix:
-        if len(row) != row_length:
-            raise TypeError("Each row of the matrix must have the same size")
-
-    new_matrix = []
-    for row in matrix:
-        new_row = [round(elem / div, 2) for elem in row]
-        new_matrix.append(new_row)
-
-    return new_matrix
+    for i in range(size):
+        print("#" * size)
