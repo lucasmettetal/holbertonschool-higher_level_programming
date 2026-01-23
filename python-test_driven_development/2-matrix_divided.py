@@ -15,7 +15,7 @@ def matrix_divided(matrix, div):
                    or if div is not a number.
         ZeroDivisionError: If div is zero.
     Returns:
-        list of lists of float: A new matrix with the divided values rounded 
+        list of lists of float: A new matrix with the divided values rounded
         to 2 decimal places.
     """
 
