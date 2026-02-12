@@ -33,3 +33,12 @@ class Student:
                 all(isinstance(attr, str) for attr in attrs):
             return {key: value for key, value in self.__dict__.items()
                     if key in attrs}
+
+    def reload_from_json(self, json):
+        """Replaces all attributes of the Student instance
+
+        Args:
+            json: dictionary with attribute names and values
+        """
+        for key, value in json.items():
+            setattr(self, key, value)
