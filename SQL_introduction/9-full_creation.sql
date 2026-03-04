@@ -1,3 +1,4 @@
+-- create a new table names second_table with the same columns as first_table and an additional column named score
 CREATE TABLE IF NOT EXISTS second_table (
     id INT,
     name VARCHAR(256),
