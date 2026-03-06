@@ -1,29 +1,39 @@
 #!/usr/bin/python3
-"""Print all states starting with uppercase N."""
+"""List all states from the database."""
 
 import MySQLdb
 import sys
 
 
 def main():
-    """Connect to the database and display matching states."""
-    connection = MySQLdb.connect(
+    """Run the SQL query and print results."""
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
+    db = MySQLdb.connect(
         host="localhost",
         port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3]
+        user=username,
+        passwd=password,
+        db=database
     )
 
-    cursor = connection.cursor()
-    query = "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
-    cursor.execute(query)
+    cursor = db.cursor()
 
-    for state in cursor.fetchall():
+    cursor.execute("""
+        SELECT * FROM states
+        WHERE name LIKE BINARY 'N%'
+        ORDER BY id ASC;
+        """)
+
+    states = cursor.fetchall()
+
+    for state in states:
         print(state)
 
     cursor.close()
-    connection.close()
+    db.close()
 
 
 if __name__ == "__main__":
