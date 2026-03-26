@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Contact</title>
+</head>
+<body>
+    {% include 'header.html' %}
 
-{% block content %}
-<h2>Contact Us</h2>
-<p>Contact Us and a paragraph (<p>) with content for the contact page.</p>
+    <h1>Contact Us</h1>
+    <p>This page contains contact information for the Flask application.</p>
 
-<h3>Ways to Reach Us:</h3>
-<ul>
-    <li>Email: contact@myflaskapp.com</li>
-    <li>Phone: +1 (555) 123-4567</li>
-    <li>Address: 123 Web Street, Tech City, TC 12345</li>
-</ul>
-{% endblock %}
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>About</title>
+</head>
+<body>
+    {% include 'header.html' %}
 
-{% block content %}
-<h2>About Us</h2>
-<p>About Us and a paragraph (<p>) with content about the page.</p>
+    <h1>About Us</h1>
+    <p>This page contains information about our Flask application.</p>
 
-<h3>Our Mission:</h3>
-<ul>
-    <li>Build quality web applications</li>
-    <li>Learn modern web technologies</li>
-    <li>Share knowledge with the community</li>
-</ul>
-{% endblock %}
+    {% include 'footer.html' %}
+</body>
+</html>
