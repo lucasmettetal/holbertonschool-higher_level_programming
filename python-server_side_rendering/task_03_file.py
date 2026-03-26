@@ -51,14 +51,23 @@ def products():
         try:
             product_id = int(product_id)
         except ValueError:
-            return render_template("product_display.html", error="Product not found")
+            return render_template(
+                "product_display.html",
+                error="Product not found")
 
-        filtered_products = [product for product in products_list if product.get("id") == product_id]
+        filtered_products = [
+            product for product in products_list
+            if product.get("id") == product_id
+        ]
 
         if not filtered_products:
-            return render_template("product_display.html", error="Product not found")
+            return render_template(
+                "product_display.html",
+                error="Product not found")
 
-        return render_template("product_display.html", products=filtered_products)
+        return render_template(
+            "product_display.html",
+            products=filtered_products)
 
     return render_template("product_display.html", products=products_list)
 
