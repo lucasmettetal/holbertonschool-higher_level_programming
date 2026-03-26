@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Products Display</h1>
+    
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+    
+    {% if products %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>${{ "%.2f"|format(product.price) }}</td>
+                        <td>{{ product.category }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        {% if not error %}
+            <p>No products to display. <a href="/products?source=sql">Load products</a></p>
+        {% endif %}
+    {% endif %}
+    
+    <hr>
+    <h3>Try different data sources:</h3>
+    <ul>
+        <li><a href="/products?source=json">Load from JSON</a></li>
+        <li><a href="/products?source=csv">Load from CSV</a></li>
+        <li><a href="/products?source=sql">Load from SQLite</a></li>
+        <li><a href="/products?source=invalid">Test invalid source</a></li>
+    </ul>
+</div>
+{% endblock %}
